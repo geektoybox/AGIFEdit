@@ -105,7 +105,7 @@ class SettingsDialog(QDialog):
 class AboutDialog(QDialog):
     """About dialog with logo, links, and license text."""
 
-    def __init__(self, parent, assets_dir: Path, app_name: str):
+    def __init__(self, parent, assets_dir: Path, app_name: str, version: str = ""):
         super().__init__(parent)
         self.setWindowTitle(f"About {app_name}")
         self.resize(520, 620)
@@ -142,6 +142,11 @@ class AboutDialog(QDialog):
             'GitHub: <a href="https://github.com/geektoybox/GeeksGIFEditor">'
             "Geek's GIF Editor on GitHub</a>"
         )
+        if version:
+            subtitle.setText(
+                f"Version {version}<br>"  # show version above the copyright line
+                + subtitle.text()
+            )
         subtitle.setAlignment(Qt.AlignmentFlag.AlignHCenter)
         subtitle.setOpenExternalLinks(True)
         layout.addWidget(subtitle)

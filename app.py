@@ -21,6 +21,7 @@ from PIL import Image, ImageSequence
 from .dialogs import SettingsDialog, AboutDialog
 from .model import FrameData, AppConfig, load_config, save_config
 from .ui_main import build_main_ui
+from . import __version__
 
 
 APP_NAME = "Geek's Animated GIF Editor"
@@ -877,7 +878,7 @@ class MainWindow(QMainWindow):
             self.mark_unsaved()
 
     def open_about(self) -> None:
-        dlg = AboutDialog(self, self.assets_dir, APP_NAME)
+        dlg = AboutDialog(self, self.assets_dir, APP_NAME, __version__)
         dlg.exec()
 
 
